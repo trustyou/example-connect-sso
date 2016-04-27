@@ -8,7 +8,11 @@ a user within the TrustYou system, allowing the external user to log into TrustY
 import argparse
 import logging
 import sys
-import urllib
+try:
+    from urllib import urlencode
+except ImportError:
+    from urllib.parse import urlencode
+
 # These modules are used in the commented sections.
 # import random
 # import string
@@ -20,7 +24,9 @@ CONNECT_STAGING_URL = 'http://analytics.staging.trustyou.com/sso/connect/log_in/
 
 
 def parse_args():
-    parser = argparse.ArgumentParser('Create signed SSO request for TY Connect')
+    parser = argparse.ArgumentParser(
+        'Create signed SSO request for TY Connect',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument(
         'partner_id', type=str,
         help="Value use for both the 'partner_id' and 'oauth_consumer_key' query parameters")
@@ -29,7 +35,9 @@ def parse_args():
     parser.add_argument(
         'private_key', type=lambda path: open(path).read(),
         help="Your private key's file path. Must be a RSA key encoded in PEM format")
-    parser.add_argument('--connect-url', dest='connect_url', default=CONNECT_STAGING_URL)
+    parser.add_argument(
+        '--connect-url', dest='connect_url', default=CONNECT_STAGING_URL, required=False,
+        help="The URL of the TrustYou Connect service")
 
     return parser.parse_args()
 
@@ -57,7 +65,7 @@ def generate_signed_request(partner_id, hotel_id, private_key, connect_url):
         signature_type=oauth1.SIGNATURE_TYPE_QUERY
     )
 
-    unsigned_url = connect_url + '?' + urllib.urlencode(params)
+    unsigned_url = connect_url + '?' + urlencode(params)
 
     url, headers, body = client.sign(unsigned_url, http_method='PUT')
 
