@@ -6,7 +6,7 @@ Requirements
 ------------
 
 Requires Python 2.7, 3.4 or 3.5
-
+oauthlib==1.0.3
 
 Example
 -------
