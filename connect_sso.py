@@ -20,7 +20,8 @@ except ImportError:
 
 from oauthlib import oauth1
 
-CONNECT_STAGING_URL = 'http://analytics.staging.trustyou.com/sso/connect/log_in/'
+# Notice no trailing slash
+CONNECT_STAGING_URL = 'http://analytics.staging.trustyou.com/connect/log_in'
 
 
 def parse_args():
