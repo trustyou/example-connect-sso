@@ -39,5 +39,5 @@ $ openssl rsa -in YOURNAME-testing-private-public.pem -outform PEM -pubout -out 
 ```
 After running these commands:
 
-Share the YOURNAME-testing-public.pem and YOURNAME-production-public.pem file with TrustYou by email
+Share the YOURNAME-testing-public.pem and YOURNAME-production-public.pem file with TrustYou by email.
 Share the private keys with your developer charged with developing the SSO integration. They need to be accessible from the SSO code to sign the requests to us. Make sure to keep these files secret - don't email them to us or any other third parties.
