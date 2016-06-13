@@ -1,31 +1,14 @@
 TrustYou Connect Service
 ------------------------
-This script shows an example of how to use the TY Connect service.
+This repository contains a series of examples of how to authenticate with 
+the TrustYou Connect service
 
-Requirements
-------------
+At the moment there are Python and PHP examples, but others might follow.
 
-Requires Python 2.7, 3.4 or 3.5
-oauthlib==1.0.3
-PyJWT==1.4.0
-cryptography==1.3.1
+The examples here should not be considered a library. Use these only as templates
+when writing your own code.
 
-Example
--------
-Run it like so
-
-```
-python connect_sso.py <partner_id> <hotel_id> <path/to/private/key>
-```
-
-
-Or so, specifying the URL of TY Connect
-
-```
-python connect_sso.py <partner_id> <hotel_id> <path/to/private/key> --connect-url <http://other.url.here>
-```
-
- How to create the private-public key pairs
+How to create the private-public key pairs
 -------------------------------------------
 
 Creating a key pair is easy. On a Linux system, simply perform the steps below twice, choose first "YOURNAME-testing-public.pem" and then a second time "YOURNAME-production-public.pem" as an output file name.
