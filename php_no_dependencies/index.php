@@ -58,28 +58,27 @@ echo "<h3>The signed (but unencoded) string:</h3>" . $unencoded_signature;
 
 echo "<hr/>";                                                                  
 
-echo "<h3>Private key path </h3>" . $priv_key_path;                                     
-                                                                               
+echo "<h3>Private key path </h3>" . $priv_key_path;
+
 echo "<hr>";                                                                   
-                                                                               
+
 /*                                                                             
     if we have                                                                 
 GET                                                                            
-http://asdf.com/asdf/zxcv                                                      
-oauth_anything=b                                                               
-oauth_something=a                                                              
-                                                                               
-    then the base string is                                                    
-                                                                               
+http://asdf.com/asdf/zxcv?oauth_anything=b&oauth_something=a                                                              
+
+    then the base string is. Important detail: when building this string, the query params must be sorted by key 
+    (and if multiple identical keys are present, then the entryes should be sorted by value)
+
     GET&http%3A%2F%2Fasdf.com%2Fasdf%2Fzxcv&oauth_anything=b&oauth_something=a
 
-    and it must be signed                                                      
+    and it must be signed, then base64 encoded and then urlencoded.
 
 	This process is described in the oauth1.0 signing process (example):
 	http://oauth.net/core/1.0/#anchor30
 
 */                                                                             
-                                                                               
+
 $signature = urlencode(base64_encode($unencoded_signature));
 echo "<h3>The resulted unencoded_signature </h3>" . $unencoded_signature;                              
 echo "<hr/>";                                                                  
