@@ -39,11 +39,14 @@ def parse_args():
     parser.add_argument(
         '--connect-url', dest='connect_url', default=CONNECT_STAGING_URL, required=False,
         help="The URL of the TrustYou Connect service")
+    parser.add_argument(
+        '--http-method', dest='http_method', default="GET", required=False,
+        help="The HTTP Method to call the endpoint with. Default GET")
 
     return parser.parse_args()
 
 
-def generate_signed_request(partner_id, hotel_id, private_key, connect_url):
+def generate_signed_request(partner_id, hotel_id, private_key, connect_url, method):
     # At this moment we don't accept multiple query sting parameters,
     # so a dict can be used.
     params = {
@@ -68,7 +71,7 @@ def generate_signed_request(partner_id, hotel_id, private_key, connect_url):
 
     unsigned_url = connect_url + '?' + urlencode(params)
 
-    url, headers, body = client.sign(unsigned_url, http_method='PUT')
+    url, headers, body = client.sign(unsigned_url, http_method=method)
 
     return url
 
@@ -78,7 +81,7 @@ if __name__ == '__main__':
     logging.basicConfig(stream=sys.stderr, level=logging.INFO)
 
     request_url = generate_signed_request(
-        args.partner_id, args.hotel_id, args.private_key, args.connect_url)
+        args.partner_id, args.hotel_id, args.private_key, args.connect_url, http_method)
 
     logging.info('The request url: \n\n{}\n\n'.format(request_url))
 
