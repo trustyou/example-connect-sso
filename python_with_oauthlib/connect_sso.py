@@ -81,7 +81,6 @@ if __name__ == '__main__':
     logging.basicConfig(stream=sys.stderr, level=logging.INFO)
 
     request_url = generate_signed_request(
-        args.partner_id, args.hotel_id, args.private_key, args.connect_url, http_method)
+        args.partner_id, args.hotel_id, args.private_key, args.connect_url, args.http_method)
 
     logging.info('The request url: \n\n{}\n\n'.format(request_url))
-
