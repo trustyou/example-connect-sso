@@ -11,7 +11,7 @@ $partner_id = "local_test_partner_1";
 $hotel_id =  "hotel_1";                   
 
 // Replace this with the URL pointing to the desired environment
-$sso_endpoint = "http://analytics.integration.trustyou.com/connect/log_in";    
+$sso_endpoint = "https://analytics.integration.trustyou.com/connect/log_in";    
 
 // Replace this with a path to your own PEM private key
 $priv_key_path = "file:///home/vardelean/priv_vi1_local_test_partner_1.pem";   
