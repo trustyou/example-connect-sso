@@ -7,9 +7,9 @@ Requirements
 ------------
 
 Requires Python 2.7, 3.4 or 3.5
-oauthlib==1.0.3
-PyJWT==1.4.0
-cryptography==1.3.1
+```
+$ pip install -r requirements.txt
+```
 
 Example
 -------
