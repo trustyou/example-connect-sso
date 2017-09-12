@@ -24,3 +24,13 @@ After running these commands:
 
 Share the YOURNAME-testing-public.pem and YOURNAME-production-public.pem file with TrustYou by email.
 Share the private keys with your developer charged with developing the SSO integration. They need to be accessible from the SSO code to sign the requests to us. Make sure to keep these files secret - don't email them to us or any other third parties.
+
+Some programming languages work better with different key types. For the java example for instance, we managed to best use the .der format. After you have generated the .pem files, these can easily be converted to .der format with these commands
+
+```
+$ # This converts a private PEM file to a private DER file
+$ openssl pkcs8 -topk8 -inform PEM -outform DER -in ./my_private_key.pem -out ./my_private.der -nocrypt
+
+$ # This creates a public DER file from a private PEM file
+$ openssl rsa -in ./private.pem -outform DER -pubout -out ./public.der
+```
