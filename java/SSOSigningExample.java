@@ -27,6 +27,8 @@ public class SSOSigningExample {
 		// This is the command from the stackoverflow post that did it
 		// $ openssl pkcs8 -topk8 -inform PEM -outform DER -in ./my_private_key.pem -out ./my_private.der -nocrypt
 		PrivateKey privateKey = getPrivateKey(privateKeyPath);
+		// To get a public der file, use this command on the private .pem file
+		// openssl pkcs8 -topk8 -inform PEM -outform DER -in ./private.pem -out ./private.der -nocrypt
 	 	PublicKey publicKey = getPublicKey(publicKeyPath);
 	 	
 		String partner_id="your-partner-id";
