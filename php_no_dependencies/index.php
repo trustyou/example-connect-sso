@@ -2,7 +2,7 @@
 
 //These parameters need replacement:
 // Currently, the system supports PUT and GET (GET is suggested)
-$method = "PUT";                                                
+$method = "GET";                                                
 
 // Replace this with your own partner_id
 $partner_id = "local_test_partner_1";   
@@ -14,7 +14,7 @@ $hotel_id =  "hotel_1";
 $sso_endpoint = "https://analytics.integration.trustyou.com/connect/log_in";    
 
 // Replace this with a path to your own PEM private key
-$priv_key_path = "file:///home/vardelean/priv_vi1_local_test_partner_1.pem";   
+$priv_key_path = "file:///path/to/priv_vi1_local_test_partner_1.pem";   
                                                                                
 $priv_key = openssl_get_privatekey($priv_key_path);                            
 $base_string = "" . $method;
@@ -26,8 +26,10 @@ $query_params = array(
 	"oauth_token" => $hotel_id,
 	"partner_id" => $partner_id,
 	"oauth_consumer_key" => $partner_id,
+	
 	// Something like this can be used
-//	"oauth_timestamp" => $datetime->getTimestamp(),
+	// "oauth_timestamp" => $datetime->getTimestamp(),
+	
 	// These values for test purposes only; Replace them with a proper timestamp and
 	// for the nonce any random string will do
 	"oauth_timestamp" => "1465682782",
